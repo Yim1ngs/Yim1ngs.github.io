@@ -1,6 +1,8 @@
-http://example.com/2025/04/02/%E6%9D%82%E6%8A%80%EF%BC%81/
+http://example.com/2025/04/22/CVE-2024-50379-Tomcat-rce/
 http://example.com/2025/04/02/Week2-hgame2025/
 http://example.com/2025/04/02/Week1-hgame2025/
+http://example.com/2025/04/02/%E6%9D%82%E6%8A%80%EF%BC%81/
 http://example.com/2025/04/02/hgame-SigninJava/
 http://example.com/
 http://example.com/tags/CTF-WP/
+http://example.com/tags/CTF-CVE/

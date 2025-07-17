@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-04-23T08:42:30.221Z</updated>
+  <updated>2025-07-17T08:59:44.435Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java安全学习篇:1-反射</title>
+    <link href="http://example.com/2025/07/17/java%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AF%87-1-%E5%8F%8D%E5%B0%84/"/>
+    <id>http://example.com/2025/07/17/java%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AF%87-1-%E5%8F%8D%E5%B0%84/</id>
+    <published>2025-07-17T23:54:20.000Z</published>
+    <updated>2025-07-17T08:59:44.435Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="java-安全学习篇-–-1-反射"><a href="#java-安全学习篇-–-1-反射" class="headerlink" title="java 安全学习篇 – 1 反射"></a>java 安全学习篇 – 1 反射</h1><blockquote><p>参考文章：知识星球 phithon 的文章（java 安全漫谈 - 01.反射篇(1)）</p><p><a href="https://javaguide.cn/java/jvm/classloader.html#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%BB%8B%E7%BB%8D">参考文章：javaguide</a></p></blockquote><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="反射："><a href="#反射：" class="headerlink" title="反射："></a>反射：</h3><p>java 反射可以动态获取类信息，对象通过反射获取类，类反射获取所有方法，包括私有，p 牛这里给动态特性一个定义，“<strong>⼀一段代码，改变其中的变量量，将会导致 这段代码产⽣生功能性的变化，我称之为动态特性</strong> ”</p><p>白嫖一段代码</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">(String className, String methodName)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    <span class="hljs-type">Class</span> <span class="hljs-variable">clazz</span> <span class="hljs-operator">=</span> Class.forName(className);<br>    clazz. getMethod(methodName).invoke(clazz.newInstance());<br> &#125;<br></code></pre></td></tr></table></figure><ul><li><p><code>forName</code>  方法获取类此外还有别的方法，<code>obj.getClass()</code> 这个方法针对下文有类对应实例，通过实例获取对应类</p></li><li><p><code>getmethod</code>  方法获取类的方法</p></li><li><p><code>invoke</code>  方法执行函数</p></li><li><p><code>newInstance</code>  方法实例化类对象</p></li></ul><p>那我们想获取 Runtime 类，我们可以根据给到的实例，通过 <code>obj.getClass().forName(java.lang.Runtime)</code> 获取到 Runtime 类</p><p>forName 方法还有重载， <code>forName(String name, boolean initialize, ClassLoader loader)</code> 我们常用的实际上是</p><p><code>forName(classname, true, currentLoader)</code> 。第二个参数表示是否初始化，第三个参数是加载器，告诉虚拟机怎么加载</p><h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="java-加载器"><a href="#java-加载器" class="headerlink" title="java 加载器"></a>java 加载器</h3><p>涉及到的东西有点多，先粗略了解一下</p><p><strong>规则：</strong> 由于 java 采用延迟加载机制只有当程序需要使用某个类时，才会由类加载器加载该类。</p><p><strong>作用：</strong> 动态加载 java 类的字节码到虚拟机中，还可以加载 Java 应用所需的资源如文本、图像、配置文件、视频等等文件资源</p><h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="initialize"><a href="#initialize" class="headerlink" title="initialize"></a>initialize</h3><p>我们知道这个参数负责类是否初始化，那类的初始化有什么用呢</p><p>白嫖一段代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TrainPrint</span> &#123;<br>     &#123;<br>              System.out.printf(<span class="hljs-string">&quot;Empty block initial %s\n&quot;</span>, <span class="hljs-built_in">this</span>.getClass());<br>     &#125;<br>     <span class="hljs-keyword">static</span> &#123;<br>              System.out.printf(<span class="hljs-string">&quot;Static initial %s\n&quot;</span>, TrainPrint.class);<br>     &#125;<br>     <span class="hljs-keyword">public</span> <span class="hljs-title function_">TrainPrint</span><span class="hljs-params">()</span> &#123;<br>              System.out.printf(<span class="hljs-string">&quot;Initial %s\n&quot;</span>, <span class="hljs-built_in">this</span>.getClass());<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>当这个类被初始化时，首先调用 static，然后调用父类构造方法，之后是{}，最后是自己的构造方法</p><p>根据这个特性，我们能够发现当 <code>forName()</code> 方法中的参数可控时，我们如果能将一个类放到被攻击机中并在里面 static 部分写入恶意代码，就能达到攻击目的</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;java-安全学习篇-–-1-反射&quot;&gt;&lt;a href=&quot;#java-安全学习篇-–-1-反射&quot; class=&quot;headerlink&quot; title=&quot;java 安全学习篇 – 1 反射&quot;&gt;&lt;/a&gt;java 安全学习篇 – 1 反射&lt;/h1&gt;&lt;blockquote&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://example.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>CVE-2024-50379-Tomcat-rce</title>

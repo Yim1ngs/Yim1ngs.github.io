@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-07-21T02:37:36.036Z</updated>
+  <updated>2025-07-21T04:48:14.438Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java安全学习篇-3-反射</title>
+    <link href="http://example.com/2025/07/20/java%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AF%87-3-%E5%8F%8D%E5%B0%84/"/>
+    <id>http://example.com/2025/07/20/java%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AF%87-3-%E5%8F%8D%E5%B0%84/</id>
+    <published>2025-07-21T04:44:22.000Z</published>
+    <updated>2025-07-21T04:48:14.438Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考文章：代码审计知识星球phithon的文章（java安全漫谈 - 03.反射篇(3)）</p></blockquote><h1 id="java安全学习篇-3-反射-3"><a href="#java安全学习篇-3-反射-3" class="headerlink" title="java安全学习篇-3-反射(3)"></a>java安全学习篇-3-反射(3)</h1><h3 id="利用之一："><a href="#利用之一：" class="headerlink" title="利用之一："></a>利用之一：</h3><p>我们已经知道了，通过**getConstructor <strong>可以调用构造函数，无论其是否有参，<br>这里用一个新的执行命令的方式</strong>ProcessBuilder **<br>白嫖一段代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-type">Class</span> <span class="hljs-variable">clazz</span> <span class="hljs-operator">=</span> Class.forName(<span class="hljs-string">&quot;java.lang.ProcessBuilder&quot;</span>);  <br>((ProcessBuilder)  clazz.getConstructor(List.class).newInstance(Arrays.asList(<span class="hljs-string">&quot;calc.exe&quot;</span>))).start();<br><br><span class="hljs-comment">//(ProcessBuilder)这个是类型转换，因为返回的是obj类型</span><br></code></pre></td></tr></table></figure><p>这里，我们通过<strong>start()</strong> 直接执行了命令<br>如不使用强制转换，也可以使用反射来获取start()方法</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Class</span> <span class="hljs-variable">clazz</span> <span class="hljs-operator">=</span> Class.forName(<span class="hljs-string">&quot;java.lang.ProcessBuilder&quot;</span>); clazz.getMethod(<span class="hljs-string">&quot;start&quot;</span>).invoke(clazz.getConstructor(List.class).newInstance(Arrays.asList(<span class="hljs-string">&quot;calc.exe&quot;</span>)));<br></code></pre></td></tr></table></figure><p>p牛说”但是，我们看到，前面这个Payload用到了Java里的强制类型转换，有时候我们利用漏洞的时候（在表达式上下文中）是没有这种语法的。”</p><p>思考了一下，可能是指在沙箱环境中无法使用强制转换</p><h3 id="其二："><a href="#其二：" class="headerlink" title="其二："></a>其二：</h3><p><strong>ProcessBuilder</strong>  还有一种重载方式**public ProcessBuilder(String… command) **<br>这里我们要用到可变长参数 ，因为我们参数数量是不确定的，java处理可变长参数的方法是编译成数组</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">(String[] names)</span> &#123;&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">(String...names)</span> &#123;&#125;<br><span class="hljs-comment">//两种一样</span><br></code></pre></td></tr></table></figure><p>于是，我们传参给<strong>getConstructor</strong>只需要传<strong>String[].class</strong>这样就能用第二种重载方法</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考文章：代码审计知识星球phithon的文章（java安全漫谈 - 03.反射篇(3)）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;java安全学习篇-3-反射-3&quot;&gt;&lt;a href=&quot;#java安全学习篇-3-反射-3&quot; class=</summary>
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://example.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>java安全学习篇-2-反射</title>

@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>java安全--反射(1) | Hexo</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>java安全--反射(1)</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-11-01T09:18:55.000Z" id="date"> 2025-11-01</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-11-01T09:33:20.332Z" id="updated"> 2025-11-01</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>参考文章：知识星球 phithon 的文章（java 安全漫谈 - 01.反射篇(1)）<br><a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/classloader.html#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%BB%8B%E7%BB%8D">参考文章：javaguide</a></p>
+</blockquote>
+<h3 id="反射："><a href="#反射：" class="headerlink" title="反射："></a>反射：</h3><p>java 反射可以动态获取类信息，对象通过反射获取类，类反射获取所有方法，包括私有，p 牛这里给动态特性一个定义，“<strong>一段代码，改变其中的变量量，将会导致 这段代码产⽣生功能性的变化，我称之为动态特性</strong> ”</p>
+<p>白嫖一段代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">(String className, String methodName)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>  <span class="hljs-type">Class</span> <span class="hljs-variable">clazz</span> <span class="hljs-operator">=</span> Class.forName(className);           <br>  clazz.getMethod(methodName).invoke(clazz.newInstance()); <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>forName 方法获取类<br>此外还有别的方法，obj.getClass()这个方法针对下文有类对应实例，通过实例获取对应类</p>
+</li>
+<li><p>getmethod 方法获取类的方法</p>
+</li>
+<li><p>invoke 方法执行函数</p>
+</li>
+<li><p>newInstance 方法实例化类对象</p>
+</li>
+</ul>
+<p>那我们想获取 Runtime 类，我们可以根据给到的实例，通过 obj.getClass().forName(java.lang.Runtime)获取到 Runtime 类</p>
+<p>forName 方法还有重载， forName(String name, boolean initialize, ClassLoader loader)我们常用的实际上是</p>
+<p>forName(classname, true, currentLoader)。第二个参数表示是否初始化，第三个参数是加载器，告诉虚拟机怎么加载</p>
+<h3 id="java-加载器"><a href="#java-加载器" class="headerlink" title="java 加载器"></a>java 加载器</h3><p>涉及到的东西有点多，先粗略了解一下</p>
+<p><strong>规则：</strong> 由于 java 采用延迟加载机制只有当程序需要使用某个类时，才会由类加载器加载该类。</p>
+<p><strong>作用：</strong> 动态加载 java 类的字节码到虚拟机中，还可以加载 Java 应用所需的资源如文本、图像、配置文件、视频等等文件资源</p>
+<h3 id="initialize"><a href="#initialize" class="headerlink" title="initialize"></a>initialize</h3><p>我们知道这个参数负责类是否初始化，那类的初始化有什么用呢</p>
+<p>白嫖一段代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TrainPrint</span> &#123;<br>     &#123;<br>              System.out.<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Empty block initial %s\n&quot;</span>, <span class="hljs-keyword">this</span>.<span class="hljs-built_in">getClass</span>());<br>     &#125;<br><br>     <span class="hljs-type">static</span> &#123;<br>              System.out.<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Static initial %s\n&quot;</span>, TrainPrint.<span class="hljs-keyword">class</span>);<br>     &#125;<br><br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TrainPrint</span><span class="hljs-params">()</span> </span>&#123;<br>              System.out.<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Initial %s\n&quot;</span>, <span class="hljs-keyword">this</span>.<span class="hljs-built_in">getClass</span>());<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当这个类被初始化时，首先调用 static，然后调用父类构造方法，之后是{}，最后是自己的构造方法</p>
+<p>根据这个特性，我们能够发现当 forName()方法中的参数可控时，我们如果能将一个类放到被攻击机中并在里面 static 部分写入恶意代码，就能达到攻击目的</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-start"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/11/01/hgame-SigninJava/">← 下一篇 hgame-SigninJava</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Yim1ngs</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">反射：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">java 加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#initialize"><span class="toc-number">3.</span> <span class="toc-text">initialize</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

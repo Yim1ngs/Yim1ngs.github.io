@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WEB缓存七篇 | Hexo</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>WEB缓存七篇</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2026-03-21T09:21:07.000Z" id="date"> 2026-03-21</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2026-03-21T09:27:35.612Z" id="updated"> 2026-03-21</time></div></span></div></div><hr><div id="post-content"><h1 id="WEB-缓存欺骗"><a href="#WEB-缓存欺骗" class="headerlink" title="WEB 缓存欺骗"></a>WEB 缓存欺骗</h1><h2 id="Web-cache"><a href="#Web-cache" class="headerlink" title="Web cache"></a>Web cache</h2><p>web 缓存是位于源服务器(origin server)和用户之间的系统，当用户请求一个静态资源的时候，请求会先到缓存，如果缓存里有资源，就直接返回给用户，如果缓存中没有资源(称为 cache miss),则将请求发送到源服务器，源服务器做出响应，响应在发送给与用户之前会先到缓存，根据规则决定是否存储，之后再给用户。</p>
+<h2 id="Cache-key"><a href="#Cache-key" class="headerlink" title="Cache key"></a>Cache key</h2><p>缓存键。缓存接收到 http 时，他需要决定是直接从缓存中获取资源还是转发到源服务器，这个就是缓存键的作用，</p>
+<p>缓存键从 http 请求中生成，通常包括请求的 url 和参数，也能包括请求头之类的。</p>
+<h2 id="Cache-rule"><a href="#Cache-rule" class="headerlink" title="Cache rule"></a>Cache rule</h2><p>缓存规则，决定缓存的内容和时间</p>
+<h2 id="缓存欺骗"><a href="#缓存欺骗" class="headerlink" title="缓存欺骗"></a>缓存欺骗</h2><p>欺骗 web 缓存存储动态资源，当用户访问提供的恶意 url 时，缓存将它的响应存储，攻击者再次访问该 url，获取缓存中的响应，从而获取敏感信息。</p>
+<h2 id="构建缓存欺骗攻击"><a href="#构建缓存欺骗攻击" class="headerlink" title="构建缓存欺骗攻击"></a>构建缓存欺骗攻击</h2><p>1.确定返回包含敏感信息的动态响应的端点，重点关注支持 <code>GET</code>、<code>HEAD</code> 或 <code>OPTIONS</code> 方法的端点</p>
+<p>2.确定缓存和源服务器解析 URL 路径的方式中的差异</p>
+<ul>
+<li>url 映射到 resource</li>
+<li>处理分割符</li>
+<li>规范化路径</li>
+</ul>
+<p>3.构造恶意 url</p>
+<h3 id="Cache-buster"><a href="#Cache-buster" class="headerlink" title="Cache buster"></a>Cache buster</h3><p>burp 提供的插件会向发出的每个请求添加一个唯一的查询字符串</p>
+<h3 id="判断是否缓存"><a href="#判断是否缓存" class="headerlink" title="判断是否缓存"></a>判断是否缓存</h3><p><strong>X-Cache</strong></p>
+<ul>
+<li><code>X-Cache： hit</code> - 响应是从缓存提供</li>
+<li><code>X-Cache： miss</code> - 缓存不包含请求密钥的响应，因此是从源服务器获取的</li>
+<li><code>X-Cache： dynamic</code> - 源服务器动态生成内容</li>
+<li><code>X-Cache： refresh</code> - 缓存的内容已过时，需要刷新或重新验证</li>
+</ul>
+<p><strong>Cache-Control</strong></p>
+<p><code>Cache-Control</code> 标头可能包含是否缓存内容，例如 <code>max-age</code> 高于 0 的 <code>public</code> 只表示可缓存，而不是一定缓存了</p>
+<h2 id="静态拓展缓存规则"><a href="#静态拓展缓存规则" class="headerlink" title="静态拓展缓存规则"></a>静态拓展缓存规则</h2><p>我们知道了 cdn 会根据文件拓展名，例如.css .js 来判断是否缓存此时可能有漏洞可钻</p>
+<ol>
+<li>服务器和缓存对 url 的解析差异</li>
+</ol>
+<p>例如我们构造的 url 最后带着&#x2F;settings.css</p>
+<p>这时<strong>源服务器</strong>识别为 <code>/profile/settings</code> 路径，返回用户动态数据</p>
+<p>而 <strong>CDN</strong> 看到 <code>.css</code> 扩展名，认为是静态文件将结果缓存下来</p>
+<ol>
+<li>分隔符处理差异</li>
+</ol>
+<p>例如我们构造请求 URL:<code> /account;.js</code> </p>
+<p><strong>源服务器</strong> 把;识别为分隔符，访问<code>/account</code> </p>
+<p>而 <strong>CDN</strong> 看到<code>.js</code>  将其缓存</p>
+<h2 id="路径映射不一致"><a href="#路径映射不一致" class="headerlink" title="路径映射不一致"></a>路径映射不一致</h2><p>缓存与源服务器将资源的 URL 路径映射方式不一致，可能导致网络缓存欺骗漏洞</p>
+<p>路径映射有传统 url 映射 以及 REST 风格映射两种，以 <code>http://example.com/user/123/profile/1.css</code> 为例</p>
+<p>若源服务器使用 REST 风格映射，那么他会认为请求的是 profile 这个端点，而忽略后面的 1.css</p>
+<p>而 CDN 使用传统 url 映射，他就会将返回数据当作静态内容缓存起来</p>
+<p>除了上述的传统风格以及 REST，还有其他风格<br>    <strong>RPC 风格</strong> — 最直接的思路，把操作名放进路径，参数跟在后面<code>（/getUser?id=42）</code> 。早期 Web API 和 XML-RPC、JSON-RPC 都用这种方式，gRPC 的 HTTP 映射也属于此类。缺点是动词爆炸，难以统一管理。<br>    <strong>GraphQL 单端点</strong> — 所有请求都打到同一个路径（通常是 POST &#x2F;graphql），路径本身不携带语义，查询结构完全在请求体里描述。适合复杂的前端数据获取场景，但对 HTTP 缓存不友好。<br>    <strong>Action 风格</strong> — Rails、Laravel 等 MVC 框架的经典做法，路径结构是<code> /controller/action/id</code> ，比纯 RESTful 更灵活，允许自定义动词（&#x2F;posts&#x2F;publish&#x2F;5），但规范性弱一些<br>    <strong>文件系统路由</strong> — Next.js、Nuxt、SvelteKit 等现代框架的做法，直接用文件目录结构映射 URL，pages&#x2F;blog&#x2F;[slug].tsx 就自动对应 &#x2F;blog&#x2F;:slug<br>    <strong>通配符 &#x2F; 兜底路由</strong> — 用 * 或 ** 匹配任意剩余路径段，常见于静态文件服务和 SPA 中的客户端路由接管（&#x2F;* → index.html）<br>    <strong>Matrix 参数风格</strong> — 参数直接嵌入路径段而非 query string，用分号分隔（&#x2F;shop;category&#x3D;books;sort&#x3D;price）<br>    <strong>内容寻址 &#x2F; Hash 路由</strong> — 分两种：一是传统 SPA 利用 URL # 哈希部分做客户端路由（不触发服务器请求）；<br>                                 二是 IPFS 等去中心化系统用内容哈希作为路径标识符，路径指向的是内容本身而非位置。</p>
+<h2 id="分隔符的差异"><a href="#分隔符的差异" class="headerlink" title="分隔符的差异"></a><strong>分隔符的差异</strong></h2><p>以 <code>/profile;foo.css</code> 为例，如我们的 spring 框架会将 <code>;</code> 作为分割符，截断后面内容，于是返回 profile 的值，而其他框架可能将解析整个 path</p>
+<h3 id="Rails-的-分隔符机制"><a href="#Rails-的-分隔符机制" class="headerlink" title="Rails 的 . 分隔符机制"></a>Rails 的 <code>.</code> 分隔符机制</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs http">/profile        → 返回 HTML（默认）<br>/profile.json   → 返回 JSON<br>/profile.xml    → 返回 XML<br></code></pre></td></tr></table></figure>
+
+<p><strong>三种请求的对比</strong></p>
+<p><code>/profile</code> 正常请求，Rails 用默认 HTML 格式化器处理，返回用户的个人信息页面，一切正常</p>
+<p><code>/profile.css</code> Rails 看到 <code>.css</code>，认出这是一个格式标识符，但它没有 CSS 格式化器，于是直接拒绝请求，返回错误（通常是 406 Not Acceptable）。这反而是”安全”的，因为什么数据都没返回</p>
+<p><code>/profile.ico</code> 这里是关键。Rails 看到 <code>.ico</code>，不认识这个扩展名，不知道该映射到哪个格式化器，于是<strong>回退到默认行为</strong>——用 HTML 格式化器处理，把完整的用户配置信息返回出去</p>
+<p><strong>漏洞如何形成</strong><br>    Rails 的视角：&#x2F;profile.ico → 不认识 .ico → 当普通 &#x2F;profile 处理 → 返回用户数据<br>    缓存的视角：&#x2F;profile.ico → 看到 .ico 结尾 → 这是静态图标文件 → 缓存下来</p>
+<p>两边的”理解”完全错位了。Rails 觉得自己在处理一个动态请求，缓存觉得自己在缓存一个静态图标文件。最终结果是：<strong>含有敏感用户数据的动态响应被当成静态资源缓存了</strong></p>
+<h3 id="编码字符也能做为分割符"><a href="#编码字符也能做为分割符" class="headerlink" title="编码字符也能做为分割符"></a>编码字符也能做为分割符</h3><p>如 %00，例如 <code>/profile%001.js</code></p>
+<p>大多数框架如果 URL 中有 <code>%00</code> 就会报错，但有些框架会把后面也当作路径</p>
+<p>总而言之，可以使用编码字符来尝试是否存在处理差异</p>
+<h2 id="静态目录缓存规则"><a href="#静态目录缓存规则" class="headerlink" title="静态目录缓存规则"></a><strong>静态目录缓存规则</strong></h2><p>CDN 通常会配置这样的规则：凡是 URL 以某些特定前缀开头，就认为是静态资源，直接缓存。比如：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs http">/static/* → 缓存<br>/assets/* → 缓存<br>/images/* → 缓存<br>/scripts/* → 缓存<br>其他路径 → 不缓存，转发给源服务器<br></code></pre></td></tr></table></figure>
+
+
+
+<p>攻击者把动态 API 路径和静态目录前缀拼在一起</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs http">原始路径： /api/orders/123 <br>构造路径： /static/../api/orders/123 <br>        或者 /assets/..%2Fapi%2Forders%2F123<br></code></pre></td></tr></table></figure>
+
+<p>缓存看到路径以 <code>/static/</code> 开头，触发缓存规则，打算缓存这个响应</p>
+<p>但源服务器在处理路径时会做<strong>路径规范化</strong>，<code>..</code> 解析了&#x2F;static，最终实际访问的是 <code>/api/orders/123</code>，返回真实的订单数据</p>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><p><strong>给动态资源加 <code>Cache-Control</code>  响应头</strong></p>
+<p>返回动态数据的 API 响应头里明确告诉缓存”不要存这个”：</p>
+<p><code>Cache-Control: no-store, private</code> </p>
+<p><code>no-store</code> 的意思是任何缓存（CDN、代理、浏览器）都不得存储这个响应。<code>private</code> 的意思是这个响应只属于当前用户，不能被共享缓存存储</p>
+<p><strong>确保 CDN 的缓存规则不会覆盖</strong>CDN 的配置规则优先级可能更高。CDN 里配置了所有 .js 结尾的请求缓存 24 小时，这条规则就会把源服务器返回的 no-store 覆盖掉。确保缓存规则的优先级低于源服务器的响应头，或者设置遵守源服务器的 Cache-Control</p>
+<p><strong>启用 CDN 的内容类型校验功能</strong>缓存在存储响应之前，对比两件事：URL 的扩展名： .ico响应的 Content-Type： text&#x2F;html两者不匹配就拒绝缓存</p>
+<p><strong>消除源服务器和缓存之间的路径解析差异</strong>让两边行为保持一致：要么都解码 %2f 再解析 ..要么都不解码，按字面路径处理</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/11/14/vidar-scan%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97-1/">vidar-scan开发日志-1 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Yim1ngs</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB-%E7%BC%93%E5%AD%98%E6%AC%BA%E9%AA%97"><span class="toc-number">1.</span> <span class="toc-text">WEB 缓存欺骗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-cache"><span class="toc-number">1.1.</span> <span class="toc-text">Web cache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache-key"><span class="toc-number">1.2.</span> <span class="toc-text">Cache key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache-rule"><span class="toc-number">1.3.</span> <span class="toc-text">Cache rule</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%AC%BA%E9%AA%97"><span class="toc-number">1.4.</span> <span class="toc-text">缓存欺骗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E7%BC%93%E5%AD%98%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="toc-number">1.5.</span> <span class="toc-text">构建缓存欺骗攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache-buster"><span class="toc-number">1.5.1.</span> <span class="toc-text">Cache buster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E7%BC%93%E5%AD%98"><span class="toc-number">1.5.2.</span> <span class="toc-text">判断是否缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%8B%93%E5%B1%95%E7%BC%93%E5%AD%98%E8%A7%84%E5%88%99"><span class="toc-number">1.6.</span> <span class="toc-text">静态拓展缓存规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="toc-number">1.7.</span> <span class="toc-text">路径映射不一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%9A%94%E7%AC%A6%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">1.8.</span> <span class="toc-text">分隔符的差异</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Rails-%E7%9A%84-%E5%88%86%E9%9A%94%E7%AC%A6%E6%9C%BA%E5%88%B6"><span class="toc-number">1.8.1.</span> <span class="toc-text">Rails 的 . 分隔符机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E5%AD%97%E7%AC%A6%E4%B9%9F%E8%83%BD%E5%81%9A%E4%B8%BA%E5%88%86%E5%89%B2%E7%AC%A6"><span class="toc-number">1.8.2.</span> <span class="toc-text">编码字符也能做为分割符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E7%9B%AE%E5%BD%95%E7%BC%93%E5%AD%98%E8%A7%84%E5%88%99"><span class="toc-number">1.9.</span> <span class="toc-text">静态目录缓存规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-number">1.10.</span> <span class="toc-text">防御</span></a></li></ol></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

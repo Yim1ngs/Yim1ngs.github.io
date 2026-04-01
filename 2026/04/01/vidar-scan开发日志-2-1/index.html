@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>vidar-scan开发日志-2 | Hexo</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>vidar-scan开发日志-2</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2026-04-01T12:12:57.000Z" id="date"> 2026-04-01</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2026-04-01T13:41:10.839Z" id="updated"> 2026-04-01</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>突然想起还没写后续，回忆着写一下</p>
+</blockquote>
+<p>继上次路径爆破功能介绍后，我记忆中更新的内容。。。</p>
+<h2 id="路径爆破部分"><a href="#路径爆破部分" class="headerlink" title="路径爆破部分"></a>路径爆破部分</h2><p>在原来只是通过响应码识别的基础上，加入了 404page 的识别模型，也就是我们常说的 ai 赋能</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Predict404</span><span class="hljs-params">(text <span class="hljs-type">string</span>)</span></span> (<span class="hljs-type">string</span>, <span class="hljs-type">error</span>) &#123;<br>    relativePath := <span class="hljs-string">&quot;src/model/model_404.bin&quot;</span><br>    modelPath, err := filepath.Abs(relativePath)<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;failed to load model: %v&quot;</span>, err)<br>    &#125;<br>    model := fasttext.Open(modelPath)<br>    <span class="hljs-keyword">defer</span> model.Close()<br>    preds, err := model.Predict(text)<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, err<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> preds == <span class="hljs-literal">nil</span> || <span class="hljs-built_in">len</span>(preds) == <span class="hljs-number">0</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, errors.New(<span class="hljs-string">&quot;no prediction&quot;</span>)<br>    &#125;<br><br>    pred1, pred2 := preds[<span class="hljs-number">0</span>], preds[<span class="hljs-number">1</span>]<br><br>    <span class="hljs-keyword">if</span> pred1.Probability &gt; pred2.Probability &#123;<br>       <span class="hljs-keyword">return</span> pred1.Label, <span class="hljs-literal">nil</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>       <span class="hljs-keyword">return</span> pred2.Label, <span class="hljs-literal">nil</span><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>很可惜，这部分是朋友写的，我只负责用，不是很懂，但是好歹也是解决了一些大网站存在的软 404 页面</p>
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p>之后重点应该转到端口扫描上来了，一开始我想着，端口扫描不就是给一个个端口发包么，和路径爆破应该差别不大，之后经过一番了解和学长的指导，了解到不需要建立完整的 tcp 握手，只需要发送 syn 包探活即可</p>
+<p>很显然现在不能直接用 client.Do 发个 http 包了，大致流程如下</p>
+<ol>
+<li><strong>路由查询</strong>：调用 <code>routing.New()</code> 读取内核路由表，然后 <code>router.Route(dst)</code> 确定访问目标 IP 时使用的网卡接口（<code>iface</code>）、网关（<code>gw</code>）和源 IP（<code>srcIP</code>）</li>
+<li><strong>获取网卡对象</strong>：<code>net.InterfaceByName(iface.Name)</code> 拿到完整网卡信息，包括 MAC 地址</li>
+<li><strong>打开 pcap 句柄</strong>：<code>pcap.OpenLive(iface.Name, 65535, false, pcap.BlockForever)</code> 打开原始抓包&#x2F;发包句柄</li>
+<li><strong>ARP 解析目标 MAC</strong>：调用 <code>resolveMAC(handle, ifaceObj, srcIP, nextHop)</code>——构造 ARP Request 广播包，发出后等待 ARP Reply，从中提取下一跳的 MAC 地址（如果有网关就解析网关 MAC，否则解析目标主机 MAC）</li>
+<li><strong>设置 BPF 过滤器</strong>：<code>tcp and src host &lt;dst&gt; and dst host &lt;srcIP&gt; and dst port &lt;srcPort&gt;</code>，只捕获从目标返回的、目的端口为 56789 的 TCP 包</li>
+<li><strong>启动监听协程</strong>：<code>go s.listenReply()</code> 在后台持续读包</li>
+</ol>
+<p>设置 worker，每个 worker 负责一个端口，通过令牌桶控制发包速率 <code>basework.Limiter.Wait(context.Background())</code>,且每个 worker 完成一个任务后 “休息” 1000ms</p>
+<p>逐层构造原始 SYN 包</p>
+<ol>
+<li><strong>以太网层</strong>：<code>layers.Ethernet{SrcMAC, DstMAC, EthernetTypeIPv4}</code></li>
+<li><strong>IP 层</strong>：<code>layers.IPv4{Version:4, IHL:5, TTL:64, Protocol:TCP, SrcIP, DstIP}</code></li>
+<li><strong>TCP 层</strong>：<code>layers.TCP{SrcPort:56789, DstPort:目标端口, SYN:true, Window:14600}</code></li>
+<li><strong>计算校验和</strong>：<code>tcp.SetNetworkLayerForChecksum(ip4)</code> 让 gopacket 根据 IP 伪首部自动计算 TCP 校验和</li>
+<li><strong>序列化</strong>：<code>gopacket.SerializeLayers(buf, opts, eth, ip4, tcp)</code>，开启 <code>FixLengths</code> 和 <code>ComputeChecksums</code></li>
+<li><strong>发送</strong>：<code>s.handle.WritePacketData(buf.Bytes())</code> 通过 pcap 句柄直接写入网卡</li>
+</ol>
+<p>之后就是发包后等待回包，判断标志位：<code>SYN+ACK</code> → <code>&quot;open&quot;</code>，<code>RST</code> → <code>&quot;close&quot;</code> 这里，把超时也视为 close 处理（原来一直在和超时较劲，之后学长告知相关内容，仿制在扫描器中超时和 close 几乎是一回事）所以，设置一个最大等待时间，不会一直等待</p>
+<p>在一开始，我使用的是并发控制，之后改为了并发控制和速率控制一起，所以写了个自适应速率控制器，因为要考虑到目标服务器的性能，本机的性能，不能瞬发巨量包</p>
+<p>每个 worker 完成任务后上传信息<br>    func RecordResult(err error, latency time.Duration) {<br>        StatLock.Lock()<br>        defer StatLock.Unlock()<br>        Stats.Total++            &#x2F;&#x2F; 总请求数 +1<br>        Stats.LateSum +&#x3D; latency &#x2F;&#x2F; 累加延迟<br>        if err !&#x3D; nil {<br>            Stats.Err++          &#x2F;&#x2F; 错误数 +1<br>        }<br>    }</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">RecordResult</span><span class="hljs-params">(err <span class="hljs-type">error</span>, latency time.Duration)</span></span> &#123;<br> StatLock.Lock()<br> <span class="hljs-keyword">defer</span> StatLock.Unlock()<br> Stats.Total++ <span class="hljs-comment">// 总请求数 +1</span><br> Stats.LateSum += latency <span class="hljs-comment">// 累加延迟</span><br> <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>   Stats.Err++ <span class="hljs-comment">// 错误数 +1 </span><br> &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>此处，只有出现在 open close timeout 外的状态才会算作异常 err</p>
+<p>此处，限制速率的具体实现是一个令牌桶，每个 worker 的任务中会有一个 Wait，只有令牌桶中有令牌时，才可以拿到令牌去运行</p>
+<p>自适应速率的实现比较粗糙，还有待改进</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> ErrRate &gt; ErrRateHigh || AvgLatency &gt; RttHigh &#123;<br>			Ssthresh = CurRps / <span class="hljs-number">2.0</span><br>			<span class="hljs-keyword">if</span> Ssthresh &lt; MinRps &#123;<br>				Ssthresh = MinRps<br>			&#125;<br><br>			NewRps = CurRps * <span class="hljs-number">0.5</span><br>			<span class="hljs-keyword">if</span> NewRps &lt; MinRps &#123;<br>				NewRps = MinRps<br>			&#125;<br><br>			SlowStart = <span class="hljs-literal">true</span><br><br>			fmt.Printf(<span class="hljs-string">&quot;[auto] CONGESTION: errRate=%.4f avgLatency=%v -&gt; cut RPS to %.1f, ssthresh=%.1f\n&quot;</span>,<br>				ErrRate, AvgLatency, NewRps, Ssthresh)<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-keyword">if</span> SlowStart &amp;&amp; CurRps &lt; Ssthresh &#123;<br>				NewRps = CurRps * <span class="hljs-number">2</span><br><br>				<span class="hljs-keyword">if</span> NewRps &gt; Ssthresh &#123;<br>					NewRps = Ssthresh<br>				&#125;<br>				fmt.Printf(<span class="hljs-string">&quot;[auto] slowStart: Rps to %.1f\n&quot;</span>, NewRps)<br><br>				<span class="hljs-keyword">if</span> NewRps &gt;= Ssthresh &#123;<br>					SlowStart = <span class="hljs-literal">false</span><br>				&#125;<br><br>			&#125; <span class="hljs-keyword">else</span> &#123;<br>				step := CurRps * <span class="hljs-number">0.1</span><br>				<span class="hljs-keyword">if</span> step &lt; <span class="hljs-number">5</span> &#123;<br>					step = <span class="hljs-number">5</span><br>				&#125;<br><br>				NewRps = CurRps + step<br>				fmt.Printf(<span class="hljs-string">&quot;[auto] congestion-avoid: RPS to %.1f (+%.1f)\n&quot;</span>, NewRps, step)<br><br>			&#125;<br>		&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以及什么 retry 机制就不多说了</p>
+<h2 id="漏扫模块"><a href="#漏扫模块" class="headerlink" title="漏扫模块"></a>漏扫模块</h2><p>本模块比较简单，依旧是传统那套依据 yaml 文件发包，多的部分可能是可以通过编辑 yaml 中加入某个字段实现获取想要的信息，其他没什么太多变化，说一下有这么个东西，但还不是很成熟</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2026/04/01/vidar-scan%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97-2/"> 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Yim1ngs</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%88%86%E7%A0%B4%E9%83%A8%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">路径爆破部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">2.</span> <span class="toc-text">端口扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%89%AB%E6%A8%A1%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">漏扫模块</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
